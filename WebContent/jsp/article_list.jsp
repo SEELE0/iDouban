@@ -7,11 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>文章列表</title>
-<link rel="icon" href="http://img.linzworld.cn/img/douban_favicon.ico" type="image/x-icon">
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <!-- 显示文章列表的页面 -->
 		<style type="text/css">
 		/*样式初始化*/
+		:root {
+			--c-text-primary: #282a32;
+			--c-text-secondary: #686b87;
+			--c-text-action: #404089;
+			--c-accent-primary: #434ce8;
+			--c-border-primary: #eff1f6;
+			--c-background-primary: #ffffff;
+			--c-background-secondary: #fdfcff;
+			--c-background-tertiary: #ecf3fe;
+			--c-background-quaternary: #e9ecf4;
+		}
 		*{
 			margin:0;
 			padding:0;/*清除内外边距*/
@@ -40,8 +50,58 @@
 		}
 		body{
 			background-color: #FFFFFF;/*整个页面的背景色*/
+			background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
 		}
-		
+
+		.search {
+			position: relative;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			max-width: 340px;
+		}
+
+		.search input {
+			font: inherit;
+			color: inherit;
+			text-decoration: none;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 1em 0 36px;
+			height: 40px;
+			border-radius: 8px;
+			border: 2px solid var(--c-border-primary);
+			color: var(--c-text-action);
+			font-size: 0.875rem;
+			transition: 0.15s ease;
+			width: 100%;
+			line-height: 1;
+		}
+
+		.search input::placeholder {
+			color: var(--c-text-action);
+		}
+
+		.search input:focus, .search input:hover {
+			border-color: var(--c-accent-primary);
+		}
+
+		.search button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border: 0;
+			background-color: transparent;
+			position: absolute;
+			left: 12px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 1.25em;
+			color: var(--c-text-action);
+			padding: 0;
+			height: 40px;
+		}
 		/*顶部的导航栏*/
 		#first_menu{
 			
@@ -139,16 +199,18 @@
 			/* background-color: pink; */
 				float:left;
 				/*搜素按钮的图片*/
-				background: #FFFFFF url(http://47.102.212.18/iDouBan/image/01.png) center center no-repeat;
+				background: #FFFFFF url(http://localhost:8080/blogtest/image/01.png) center center no-repeat;
 				background-size:15px 15px;
 		}
 		/*放置主要的页面内容*/
 		#main_content{
-			width: 1040px;
-			height:1400px;
+			/*width: 1040px;*/
+			/*height:1400px;*/
 			/* background-color: blue; */
 			margin: auto 239.600px;
-			background-color: #ffffff;	
+			background: rgba(255,255,255,0.4);
+			border-radius: 10px;
+			border: 1px solid rgba(255,255,255,0.2);
 		}
 		/*我关注的人的信息*/		
 		.users_info_list{
@@ -269,23 +331,23 @@
 			<nav id="first">
 				<div id="first_menu">
 					<!-- 跳到servlet，对用户的cookie进行注销 -->
-				    <a  href="http://47.102.212.18/iDouBan/ClearLoginServlet">退出登录</a>
+				    <a  href="http://localhost:8080/blogtest/ClearLoginServlet">退出登录</a>
 				    <!-- 相对于端口号的相对路径 -->
-					<a  href="http://47.102.212.18/iDouBan/jsp/alter.jsp">账号管理</a>
-					<a  href="http://47.102.212.18/iDouBan/jsp/my_page.jsp">个人主页</a>
+					<a  href="http://localhost:8080/blogtest/jsp/alter.jsp">账号管理</a>
+					<a  href="http://localhost:8080/blogtest/jsp/my_page.jsp">个人主页</a>
 					
-					<a href="/iDouBan/DoumailServlet?method=my_doumail_list">豆邮</a>
+					<a href="/blogtest/DoumailServlet?method=my_doumail_list">豆邮</a>
 					
-					<a href="/iDouBan/FriendListServlet?method=blacklist_list">黑名单</a>
-					<a href="/iDouBan/FriendListServlet?method=attention_list">我的关注</a>
-					<a href="/iDouBan/FriendListServlet?method=friend_list">我的好友</a>
+					<a href="/blogtest/FriendListServlet?method=blacklist_list">黑名单</a>
+					<a href="/blogtest/FriendListServlet?method=attention_list">我的关注</a>
+					<a href="/blogtest/FriendListServlet?method=friend_list">我的好友</a>
 					<!-- 先跳转servlet 查询第一页的所有人信息 -->
-					<a href="/iDouBan/EveryoneListServlet?method=everyone_list">所有人</a>
+					<a href="/blogtest/EveryoneListServlet?method=everyone_list">所有人</a>
 					<!-- 编辑文章 -->
-					<a href="http://47.102.212.18/iDouBan/jsp/article_edit.jsp" target="_blank">写文章</a>
-					<a href="/iDouBan/ArticleListServlet?method=article_list">所有文章</a>
-					<a href="/iDouBan/ArticleListServlet?method=my_article_list" >我的文章</a>
-					<a href="/iDouBan/ArticleListServlet?method=my_collection_list">我的收藏</a>
+					<a href="http://localhost:8080/blogtest/jsp/article_edit.jsp" target="_blank">写文章</a>
+					<a href="/blogtest/ArticleListServlet?method=article_list">所有文章</a>
+					<a href="/blogtest/ArticleListServlet?method=my_article_list" >我的文章</a>
+					<a href="/blogtest/ArticleListServlet?method=my_collection_list">我的收藏</a>
 				</div>
 			</nav>
 			<!-- 第二个导航栏 -->
@@ -293,23 +355,25 @@
 					<nav  id="second_menu">
 						<!-- logo部分 -->
 							<div class="logo">
-							 	<img alt="豆瓣logo" src="http://47.102.212.18/iDouBan/image/豆瓣首页logo.jpg" width=175px height=58px >
+							 	<img alt="豆瓣logo" src="http://localhost:8080/blogtest/image/豆瓣首页logo.jpg" width=175px height=58px >
 							</div>
 						<!-- 导航栏部分_可选择部分 -->
 							<div class="navbar">
 								<ul>
 									<li><a href="#">首页</a></li>
-									<li><a href="http://47.102.212.18/iDouBan/jsp/my_page.jsp">个人主页</a></li>
-									<li><a href="/iDouBan/ArticleListServlet?method=article_list">浏览发现</a></li>
+									<li><a href="http://localhost:8080/blogtest/jsp/my_page.jsp">个人主页</a></li>
+									<li><a href="/blogtest/ArticleListServlet?method=article_list">浏览发现</a></li>
 								</ul>	
 							</div>
 							<!-- 搜索框部分 -->
 							<div class="search">
 									<form action="ArticleListServlet?method=search_article_list&currentPage=1" id="search_action" method="post">
+										<div class="search">
 										<!-- placeholder占位符 -->
 										<input type="text" name="search_content" id="search_content" placeholder="搜索你感兴趣的内容和人">
 										<!-- placeholder--默认显示值 -->
 										<input  type="submit" value="">
+										</div>
 									</form>
 							</div>
 					</nav>
@@ -333,7 +397,7 @@
 							</div>
 					    </c:when>
 					    <c:when test="${requestScope.msg=='我的收藏'}">
-					       	<div >
+					       	<div id="collect">
 								<h1  style="margin-bottom: 20px;">我的收藏</h1>
 							</div>
 					    </c:when>
@@ -357,6 +421,7 @@
 					    </c:otherwise>
 					</c:choose>
 						<div >
+<%--							:foreach循环遍历服务端返回数据输出页面--%>
 						 	<c:forEach  items="${requestScope.p.objects}" var="a" varStatus="status">
 								<!--文章的具体每一行的内容 -->
 									<div class="item">
@@ -364,11 +429,11 @@
 								        <div class="header">
 								        	<!--作者的头像 -->
 								            <div class="author-img">
-								                <a href="/iDouBan/ArticleShowServlet?method=article_show&article_id=${a.articleId}" target="_blank" style="margin: 5px 0px 5px 5px;">
+								                <a href="/blogtest/ArticleShowServlet?method=article_show&article_id=${a.articleId}" target="_blank" style="margin: 5px 0px 5px 5px;">
 								                	<img src="${a.authorImg}" style="width: 20px;height: 20px;border-radius: 2px;">
 								                </a>
 								            <!--作者的昵称 -->
-								            <a href="/iDouBan/ArticleShowServlet?method=article_show&article_id=${a.articleId}" target="_blank"  id="author-nickname" style="margin: 5px 0px 5px 5px;color:black;">${a.authorNick} </a>
+								            <a href="/blogtest/ArticleShowServlet?method=article_show&article_id=${a.articleId}" target="_blank"  id="author-nickname" style="margin: 5px 0px 5px 5px;color:black;">${a.authorNick} </a>
 								            </div>
 								   
 								        </div>
@@ -387,7 +452,7 @@
 											     <div class="title">
 											     
 											     		<!--文章跳转链接--跳到文章显示的页面 -->
-												        <a href="/iDouBan/ArticleShowServlet?method=article_show&article_id=${a.articleId}" target="_blank" style="color:black">
+												        <a href="/blogtest/ArticleShowServlet?method=article_show&article_id=${a.articleId}" target="_blank" style="color:black">
 												    	${a.title}
 												        </a>
 											      </div>
@@ -395,7 +460,7 @@
 											      		<a href="" target="_blank">
 											      				<!-- 此处放内容 -->
 											      		</a>
-											      			<!--借助EL表达式中的特殊用法 status.count -->
+											      			<!--借助EL表达式中的特殊用法 status.count遍历到第几个元素 -->
 											      		<div id='container${status.count}' class="article-main-content">
 											      			${a.content}
 											      		</div>
@@ -414,7 +479,7 @@
 								        </div>
 								         <c:if test="${requestScope.msg=='我的文章'}">
 									        <div >
-											  <a href="/iDouBan/ArticleListServlet?pre_method=delete_article&method=my_article_list&article_id=${a.articleId}" class="user_operation_btn" id="delete_article" style="color: red;"  onclick= "return confirm('你确定要删除这篇文章吗？删除之后将会永久删除，请慎重操作！！！')">删除</a>
+											  <a href="/blogtest/ArticleListServlet?pre_method=delete_article&method=my_article_list&article_id=${a.articleId}" class="user_operation_btn" id="delete_article" style="color: red;"  onclick= "return confirm('你确定要删除这篇文章吗？删除之后将会永久删除，请慎重操作！！！')">删除</a>
 											</div>
 									    </c:if>
 									    <c:if test="${requestScope.msg=='我的文章'}">
@@ -429,7 +494,7 @@
 					
 
 						<c:if test="${requestScope.p.totalPage!=0}">
-							 <!-- 分页选择链接    /iDouBan/ArticleListServlet?method=article_list -->
+							 <!-- 分页选择链接    /ArticleListServlet?method=article_list -->
 							 <div id="paging">
 							 		<span id="page_number">
 									当前第 ${requestScope.p.currentPage} 页，总共 ${requestScope.p.totalPage} 页             

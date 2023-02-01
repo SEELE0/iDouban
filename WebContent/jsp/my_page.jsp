@@ -6,9 +6,8 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>我的主页</title>
-	<link rel="icon" href="http://img.linzworld.cn/img/douban_favicon.ico" type="image/x-icon">
 	<!-- 我的页面的样式 -->
- <link rel="stylesheet" type="text/css" href="http://47.102.212.18/iDouBan/css/my_page.css">
+ <link rel="stylesheet" type="text/css" href="http://localhost:8080/blogtest/css/my_page.css">
 	</head>
 		<!-- 个人信息的主页 -->
 		<body>
@@ -16,23 +15,23 @@
 			<nav id="first">
 				<div id="first_menu">
 					<!-- 跳到servlet，对用户的cookie进行注销 -->
-				    <a  href="http://47.102.212.18/iDouBan/ClearLoginServlet">退出登录</a>
+				    <a  href="http://localhost:8080/blogtest/ClearLoginServlet">退出登录</a>
 				    <!-- 相对于端口号的相对路径 -->
-					<a  href="http://47.102.212.18/iDouBan/jsp/alter.jsp">账号管理</a>
-					<a  href="http://47.102.212.18/iDouBan/jsp/my_page.jsp">个人主页</a>
+					<a  href="http://localhost:8080/blogtest/jsp/alter.jsp">账号管理</a>
+					<a  href="http://localhost:8080/blogtest/jsp/my_page.jsp">个人主页</a>
 					
-					<a href="/iDouBan/DoumailServlet?method=my_doumail_list">豆邮</a>
+					<a href="/blogtest/DoumailServlet?method=my_doumail_list">豆邮</a>
 					
-					<a href="/iDouBan/FriendListServlet?method=blacklist_list">黑名单</a>
-					<a href="/iDouBan/FriendListServlet?method=attention_list">我的关注</a>
-					<a href="/iDouBan/FriendListServlet?method=friend_list">我的好友</a>
+					<a href="/blogtest/FriendListServlet?method=blacklist_list">黑名单</a>
+					<a href="/blogtest/FriendListServlet?method=attention_list">我的关注</a>
+					<a href="/blogtest/FriendListServlet?method=friend_list">我的好友</a>
 					<!-- 先跳转servlet 查询第一页的所有人信息 -->
-					<a href="/iDouBan/EveryoneListServlet?method=everyone_list">所有人</a>
+					<a href="/blogtest/EveryoneListServlet?method=everyone_list">所有人</a>
 					<!-- 编辑文章 -->
-					<a href="http://47.102.212.18/iDouBan/jsp/article_edit.jsp" target="_blank">写文章</a>
-					<a href="/iDouBan/ArticleListServlet?method=article_list">所有文章</a>
-					<a href="/iDouBan/ArticleListServlet?method=my_article_list" >我的文章</a>
-					<a href="/iDouBan/ArticleListServlet?method=my_collection_list">我的收藏</a>
+					<a href="http://localhost:8080/blogtest/jsp/article_edit.jsp" target="_blank">写文章</a>
+					<a href="/blogtest/ArticleListServlet?method=article_list">所有文章</a>
+					<a href="/blogtest/ArticleListServlet?method=my_article_list" >我的文章</a>
+					<a href="/blogtest/ArticleListServlet?method=my_collection_list">我的收藏</a>
 				</div>
 			</nav>
 			<!-- 第二个导航栏 -->
@@ -41,14 +40,14 @@
 					<nav  id="second_menu">
 						<!-- logo部分 -->
 							<div class="logo">
-							 	<img alt="豆瓣logo" src="http://47.102.212.18/iDouBan/image/豆瓣首页logo.jpg" width=175px height=58px>
+							 	<img alt="豆瓣logo" src="http://localhost:8080/blogtest/image/豆瓣首页logo.jpg" width=175px height=58px>
 							</div>
 						<!-- 导航栏部分_可选择部分 -->
 							<div class="navbar">
 								<ul>
 									<li><a href="#">首页</a></li>
-									<li><a href="http://47.102.212.18/iDouBan/jsp/my_page.jsp">个人主页</a></li>
-									<li><a href="/iDouBan/ArticleListServlet?method=article_list">浏览发现</a></li>
+									<li><a href="http://localhost:8080/blogtest/jsp/my_page.jsp">个人主页</a></li>
+									<li><a href="/blogtest/ArticleListServlet?method=article_list">浏览发现</a></li>
 								</ul>	
 							</div>
 							<!-- 搜索框部分 -->
